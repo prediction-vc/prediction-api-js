@@ -1,0 +1,21 @@
+{
+  "name": "prediction_enterprise_api",
+  "version": "1.0.0",
+  "description": "We_are_proud_to_introduce_our_1_0_0_version_of_Prediction_Enterprise_API_It_is_our_first_step_to_sharing_our_data_with_the_world_and_being_more_transparent_about_our_predictions_their_accuracy_and_our_fund_trades_and_performance_In_the_case_you_are_missing_some_data_please_drop_us_a_line_at_enterpriseprediction_vc__We_will_be_happy_to_answer_your_questions_and_implement_new_features_for_you__Platform_FAQ_httpspredictionvc_freshdesk_comsupportsolutions",
+  "license": "Unlicense",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "superagent": "3.5.2"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}
