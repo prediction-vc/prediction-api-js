@@ -1,6 +1,6 @@
 # PredictionEnterpriseApi.OHLCApi
 
-All URIs are relative to *https://dev-enterprise-prediction.herokuapp.com/api/*
+All URIs are relative to *https://enterprise.prediction.vc/api/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

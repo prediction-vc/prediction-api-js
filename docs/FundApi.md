@@ -1,6 +1,6 @@
 # PredictionEnterpriseApi.FundApi
 
-All URIs are relative to *https://dev-enterprise-prediction.herokuapp.com/api/*
+All URIs are relative to *https://enterprise.prediction.vc/api/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,7 +29,7 @@ Authorization.apiKey = 'YOUR API KEY';
 
 var apiInstance = new PredictionEnterpriseApi.FundApi();
 
-var opts = { 
+var opts = {
   'entry': "entry_example", // String | entry date for trades, e.g 2018-09-01. (only for premium accounts)
   'exit': "exit_example", // String | exit date for trades, e.g 2018-09-01. (only for premium accounts)
   'direction': "direction_example" // String | short/long
@@ -46,9 +46,9 @@ apiInstance.fundTradesGet(opts).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entry** | **String**| entry date for trades, e.g 2018-09-01. (only for premium accounts) | [optional] 
- **exit** | **String**| exit date for trades, e.g 2018-09-01. (only for premium accounts) | [optional] 
- **direction** | **String**| short/long | [optional] 
+ **entry** | **String**| entry date for trades, e.g 2018-09-01. (only for premium accounts) | [optional]
+ **exit** | **String**| exit date for trades, e.g 2018-09-01. (only for premium accounts) | [optional]
+ **direction** | **String**| short/long | [optional]
 
 ### Return type
 
@@ -106,4 +106,3 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
