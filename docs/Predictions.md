@@ -1,4 +1,4 @@
-# PredictionEnterpriseApi.Predictions
+# PredictionApi.Predictions
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# PredictionEnterpriseApi.Datum7
+# PredictionApi.Datum7
 
 ## Properties
 Name | Type | Description | Notes

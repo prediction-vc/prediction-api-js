@@ -1,4 +1,4 @@
-# PredictionEnterpriseApi.FundApi
+# PredictionApi.FundApi
 
 All URIs are relative to *https://enterprise.prediction.vc/api/*
 
@@ -10,35 +10,36 @@ Method | HTTP request | Description
 
 <a name="fundTradesGet"></a>
 # **fundTradesGet**
-> FundTrades fundTradesGet(opts)
-
-Prediction Fund trade data
+> fundTradesGet(opts)
 
 Prediction Fund trade data
 
 ### Example
 ```javascript
-var PredictionEnterpriseApi = require('prediction_enterprise_api');
-var defaultClient = PredictionEnterpriseApi.ApiClient.instance;
+const PredictionApi = require('prediction-api')
+
+const defaultClient = PredictionApi.ApiClient.instance
 
 // Configure API key authorization: Authorization
-var Authorization = defaultClient.authentications['Authorization'];
-Authorization.apiKey = 'YOUR API KEY';
+const Authorization = defaultClient.authentications['Authorization']
+Authorization.apiKey = "YOUR API KEY"
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.apiKeyPrefix = 'Token';
+//Authorization.apiKeyPrefix['Authorization'] = "Token"
 
-var apiInstance = new PredictionEnterpriseApi.FundApi();
+const api = new PredictionApi.FundApi()
 
-var opts = {
-  'entry': "entry_example", // String | entry date for trades, e.g 2018-09-01. (only for premium accounts)
-  'exit': "exit_example", // String | exit date for trades, e.g 2018-09-01. (only for premium accounts)
-  'direction': "direction_example" // String | short/long
-};
-apiInstance.fundTradesGet(opts).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
+const opts = {
+  'entry': '2018-09-01', // {Date} entry date for trades
+  'exit': '2018-09-01', // {Date} exit date for trades
+  'direction': 'short' // {String} short/long
+}
+api.fundTradesGet(opts)
+  .then(data => {
+    console.log('API called successfully. Returned data: ' + data)
+  })
+  .catch(error => {
+    console.error(error)
+  })
 
 ```
 
@@ -46,8 +47,8 @@ apiInstance.fundTradesGet(opts).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entry** | **String**| entry date for trades, e.g 2018-09-01. (only for premium accounts) | [optional]
- **exit** | **String**| exit date for trades, e.g 2018-09-01. (only for premium accounts) | [optional]
+ **entry** | **Date**| entry date for trades, e.g 2018-09-01.| [optional]
+ **exit** | **Date**| exit date for trades, e.g 2018-09-01. | [optional]
  **direction** | **String**| short/long | [optional]
 
 ### Return type
@@ -73,8 +74,8 @@ Traded tokens
 
 ### Example
 ```javascript
-var PredictionEnterpriseApi = require('prediction_enterprise_api');
-var defaultClient = PredictionEnterpriseApi.ApiClient.instance;
+var PredictionApi = require('prediction_enterprise_api');
+var defaultClient = PredictionApi.ApiClient.instance;
 
 // Configure API key authorization: Authorization
 var Authorization = defaultClient.authentications['Authorization'];
@@ -82,7 +83,7 @@ Authorization.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionEnterpriseApi.FundApi();
+var apiInstance = new PredictionApi.FundApi();
 apiInstance.fundTradesTokensGet().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {

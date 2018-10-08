@@ -1,4 +1,4 @@
-# PredictionEnterpriseApi.Ohlc
+# PredictionApi.Ohlc
 
 ## Properties
 Name | Type | Description | Notes

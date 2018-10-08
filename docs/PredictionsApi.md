@@ -1,4 +1,4 @@
-# PredictionEnterpriseApi.PredictionsApi
+# PredictionApi.PredictionsApi
 
 All URIs are relative to *https://enterprise.prediction.vc/api/*
 
@@ -19,8 +19,8 @@ Returns a list of accuracies of our predictions, calculated daily.  We measure p
 
 ### Example
 ```javascript
-var PredictionEnterpriseApi = require('prediction_enterprise_api');
-var defaultClient = PredictionEnterpriseApi.ApiClient.instance;
+var PredictionApi = require('prediction_enterprise_api');
+var defaultClient = PredictionApi.ApiClient.instance;
 
 // Configure API key authorization: Authorization
 var Authorization = defaultClient.authentications['Authorization'];
@@ -28,7 +28,7 @@ Authorization.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionEnterpriseApi.PredictionsApi();
+var apiInstance = new PredictionApi.PredictionsApi();
 
 var symbol = "symbol_example"; // String | token symbol, e.g. ETH
 
@@ -79,8 +79,8 @@ Returns a list of predictions for the given symbol and given date.
 
 ### Example
 ```javascript
-var PredictionEnterpriseApi = require('prediction_enterprise_api');
-var defaultClient = PredictionEnterpriseApi.ApiClient.instance;
+var PredictionApi = require('prediction_enterprise_api');
+var defaultClient = PredictionApi.ApiClient.instance;
 
 // Configure API key authorization: Authorization
 var Authorization = defaultClient.authentications['Authorization'];
@@ -88,7 +88,7 @@ Authorization.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionEnterpriseApi.PredictionsApi();
+var apiInstance = new PredictionApi.PredictionsApi();
 
 var symbol = "symbol_example"; // String | token symbol, e.g. `ETH`
 
@@ -137,8 +137,8 @@ Returns an array of token symbols we are currently issuing predictions for.
 
 ### Example
 ```javascript
-var PredictionEnterpriseApi = require('prediction_enterprise_api');
-var defaultClient = PredictionEnterpriseApi.ApiClient.instance;
+var PredictionApi = require('prediction_enterprise_api');
+var defaultClient = PredictionApi.ApiClient.instance;
 
 // Configure API key authorization: Authorization
 var Authorization = defaultClient.authentications['Authorization'];
@@ -146,7 +146,7 @@ Authorization.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionEnterpriseApi.PredictionsApi();
+var apiInstance = new PredictionApi.PredictionsApi();
 apiInstance.predictionsTokensGet().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {

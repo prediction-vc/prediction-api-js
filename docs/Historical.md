@@ -1,4 +1,4 @@
-# PredictionEnterpriseApi.Historical
+# PredictionApi.Historical
 
 ## Properties
 Name | Type | Description | Notes

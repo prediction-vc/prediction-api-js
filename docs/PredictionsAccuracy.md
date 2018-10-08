@@ -1,4 +1,4 @@
-# PredictionEnterpriseApi.PredictionsAccuracy
+# PredictionApi.PredictionsAccuracy
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# PredictionEnterpriseApi.OHLCApi
+# PredictionApi.OHLCApi
 
 All URIs are relative to *https://enterprise.prediction.vc/api/*
 
@@ -17,8 +17,8 @@ OHLC Data
 
 ### Example
 ```javascript
-var PredictionEnterpriseApi = require('prediction_enterprise_api');
-var defaultClient = PredictionEnterpriseApi.ApiClient.instance;
+var PredictionApi = require('prediction_enterprise_api');
+var defaultClient = PredictionApi.ApiClient.instance;
 
 // Configure API key authorization: Authorization
 var Authorization = defaultClient.authentications['Authorization'];
@@ -26,7 +26,7 @@ Authorization.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionEnterpriseApi.OHLCApi();
+var apiInstance = new PredictionApi.OHLCApi();
 
 var symbol = "symbol_example"; // String | token symbol, e.g. ETH
 
