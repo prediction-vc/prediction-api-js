@@ -68,8 +68,8 @@ apiInstance.historicalGet(symbol, from, to, cols, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **String**| token symbol, e.g. &#x60;ETH&#x60; |
- **from** | **String**| historical data from this date, e.g &#x60;2018-09-01&#x60;. |
- **to** | **String**| historical data till this date, e.g &#x60;2018-09-01&#x60;. |
+ **from** | **Date**| historical data from this date, e.g &#x60;2018-09-01&#x60;. |
+ **to** | **Date**| historical data till this date, e.g &#x60;2018-09-01&#x60;. |
  **cols** | **String**| Comma separted list of columns to return. e.g. &#x60;cols&#x3D;usdPrice,volume,timeStamp&#x60; Available columns are listed in the table above. |
  **limit** | **String**| results limit, default 10 | [optional]
 
@@ -80,9 +80,9 @@ Object with key `data`
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usdPrice** | **Object** | token price in USD | [optional]
-**volume** | **Object** | token volume for the past 24 hours | [optional]
-**timestamp** | **Object** | datetime | [optional]
+**usdPrice** | **Float** | token price in USD | [optional]
+**volume** | **Float** | token volume for the past 24 hours | [optional]
+**timestamp** | **Datetime** | datetime | [optional]
 
 ### Authorization
 

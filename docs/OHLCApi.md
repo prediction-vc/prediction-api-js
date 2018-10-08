@@ -47,8 +47,8 @@ apiInstance.ohlcGet(symbol, from, to, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **String**| token symbol, e.g. ETH |
- **from** | **String**| historical data from this date, e.g 2018-09-01. |
- **to** | **String**| historical data till this date, e.g 2018-09-01. |
+ **from** | **Date**| historical data from this date, e.g 2018-09-01. |
+ **to** | **Date**| historical data till this date, e.g 2018-09-01. |
  **limit** | **String**| results limit, default 10 | [optional]
 
 ### Return type
@@ -57,12 +57,12 @@ Object with key `data`
 #### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**open** | **Object** | open price in USD | [optional]
-**high** | **Object** | high price in USD | [optional]
-**low** | **Object** | low price in USD | [optional]
-**close** | **Object** | close price in USD | [optional]
-**volume** | **Object** | token volume for the past minute | [optional]
-**timestamp** | **Object** | datetime | [optional]
+**open** | **Float** | open price in USD | [optional]
+**high** | **Float** | high price in USD | [optional]
+**low** | **Float** | low price in USD | [optional]
+**close** | **Float** | close price in USD | [optional]
+**volume** | **Float** | token volume for the past minute | [optional]
+**timestamp** | **Datetime** | datetime | [optional]
 
 
 ### Authorization

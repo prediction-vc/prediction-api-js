@@ -11,39 +11,38 @@ Method | HTTP request | Description
 
 <a name="predictionsAccuracyGet"></a>
 # **predictionsAccuracyGet**
-> PredictionsAccuracy predictionsAccuracyGet(symbol, from, to, opts)
+>  predictionsAccuracyGet(symbol, from, to, opts)
 
 Accuracy
 
-Returns a list of accuracies of our predictions, calculated daily.  We measure prediction accuracy by analyzing whether or not our prediction target has been reached once within the time frame we assign; this simulates a limit order getting filled at our predicted price. 
+Returns a list of accuracies of our predictions, calculated daily.  We measure prediction accuracy by analyzing whether or not our prediction target has been reached once within the time frame we assign; this simulates a limit order getting filled at our predicted price.
 
 ### Example
 ```javascript
-var PredictionApi = require('prediction_enterprise_api');
-var defaultClient = PredictionApi.ApiClient.instance;
+const PredictionApi = require('prediction_enterprise_api')
+const defaultClient = PredictionApi.ApiClient.instance
 
 // Configure API key authorization: Authorization
-var Authorization = defaultClient.authentications['Authorization'];
-Authorization.apiKey = 'YOUR API KEY';
+const Authorization = defaultClient.authentications['Authorization']
+Authorization.apiKey = 'YOUR API KEY'
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionApi.PredictionsApi();
+const apiInstance = new PredictionApi.PredictionsApi()
 
-var symbol = "symbol_example"; // String | token symbol, e.g. ETH
-
-var from = "from_example"; // String | predictions accuracty data from, e.g 2018-09-01.
-
-var to = "to_example"; // String | predictions accuracy data to, e.g 2018-09-05.
-
-var opts = { 
-  'limit': "limit_example" // String | results limit, default 10
-};
-apiInstance.predictionsAccuracyGet(symbol, from, to, opts).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
+const symbol = 'ETH' // String | token symbol, e.g. ETH
+const from = '2018-09-01' // Date | predictions accuracy data from
+const to = '2018-09-01' // Date | predictions accuracy data to
+const opts = {
+  'limit': '10' // String | results limit, default 10
+}
+apiInstance.predictionsAccuracyGet(symbol, from, to, opts)
+  .then(data => {
+    console.log('API called successfully. Returned data: ' + data);
+  })
+  .catch(error => {
+    console.error(error)
+  })
 
 ```
 
@@ -51,14 +50,20 @@ apiInstance.predictionsAccuracyGet(symbol, from, to, opts).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **String**| token symbol, e.g. ETH | 
- **from** | **String**| predictions accuracty data from, e.g 2018-09-01. | 
- **to** | **String**| predictions accuracy data to, e.g 2018-09-05. | 
- **limit** | **String**| results limit, default 10 | [optional] 
+ **symbol** | **String**| token symbol, e.g. ETH |
+ **from** | **Date**| predictions accuracty data from, e.g 2018-09-01. |
+ **to** | **Date**| predictions accuracy data to, e.g 2018-09-05. |
+ **limit** | **String**| results limit, default 10 | [optional]
 
 ### Return type
 
-[**PredictionsAccuracy**](PredictionsAccuracy.md)
+Object with key `data`
+#### Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**accuracy** | **Float** | Average accuracy over given tokens | [optional]
+**tokens** | **String** | Tokens the predictions were made on | [optional]
+**timestamp** | **Datetime** | time of the prediction accuracy calculation | [optional]
 
 ### Authorization
 
@@ -71,37 +76,38 @@ Name | Type | Description  | Notes
 
 <a name="predictionsGet"></a>
 # **predictionsGet**
-> Predictions predictionsGet(symbol, opts)
+>  predictionsGet(symbol, opts)
 
 Predictions
 
-Returns a list of predictions for the given symbol and given date. 
+Returns a list of predictions for the given symbol and given date.
 
 ### Example
 ```javascript
-var PredictionApi = require('prediction_enterprise_api');
-var defaultClient = PredictionApi.ApiClient.instance;
+const PredictionApi = require('prediction_enterprise_api')
+const defaultClient = PredictionApi.ApiClient.instance
 
 // Configure API key authorization: Authorization
-var Authorization = defaultClient.authentications['Authorization'];
-Authorization.apiKey = 'YOUR API KEY';
+const Authorization = defaultClient.authentications['Authorization']
+Authorization.apiKey = 'YOUR API KEY'
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionApi.PredictionsApi();
+const apiInstance = new PredictionApi.PredictionsApi()
+const symbol = 'ETH' // String | token symbol
 
-var symbol = "symbol_example"; // String | token symbol, e.g. `ETH`
-
-var opts = { 
-  '_date': "_date_example", // String | date of prediction, e.g `2018-09-01`. If not specified, predictions for today are returned.
+const opts = {
+  '_date': '2018-09-01', // String | date of prediction. If not specified, predictions for today are returned.
   'latest': true, // Boolean | Retrieve only the latest prediction for the given date, default false
-  'limit': "limit_example" // String | results limit, default 10
-};
-apiInstance.predictionsGet(symbol, opts).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
+  'limit': '10' // String | results limit, default 10
+}
+apiInstance.predictionsGet(symbol, opts)
+  .then(data => {
+    console.log('API called successfully. Returned data: ' + data)
+  })
+  .catch(error => {
+    console.error(error)
+  })
 
 ```
 
@@ -109,15 +115,25 @@ apiInstance.predictionsGet(symbol, opts).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **String**| token symbol, e.g. &#x60;ETH&#x60; | 
- **_date** | **String**| date of prediction, e.g &#x60;2018-09-01&#x60;. If not specified, predictions for today are returned. | [optional] 
- **latest** | **Boolean**| Retrieve only the latest prediction for the given date, default false | [optional] 
- **limit** | **String**| results limit, default 10 | [optional] 
+ **symbol** | **String**| token symbol, e.g. &#x60;ETH&#x60; |
+ **_date** | **Date**| date of prediction, e.g &#x60;2018-09-01&#x60;. If not specified, predictions for today are returned. | [optional]
+ **latest** | **Boolean**| Retrieve only the latest prediction for the given date, default false | [optional]
+ **limit** | **String**| results limit, default 10 | [optional]
 
 ### Return type
 
-[**Predictions**](Predictions.md)
-
+Object with key `data`
+#### Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**usdPrice** | **Float** | token price at the moment of prediction in USD | [optional]
+**direction** | **String** | short or long | [optional]
+**_3day** | **Float** | 3 day prediction | [optional]
+**target** | **Boolean** | if the 3day prediction came true | [optional]
+**_7day** | **Float** | 7 day prediction | [optional]
+**target7** | **Boolean** | if the 7day prediction came true | [optional]
+**_14day** | **Float** | 14 day prediction | [optional]
+**timestamp** | **Datetime** | time of the prediction | [optional]
 ### Authorization
 
 [Authorization](../README.md#Authorization)
@@ -129,7 +145,7 @@ Name | Type | Description  | Notes
 
 <a name="predictionsTokensGet"></a>
 # **predictionsTokensGet**
-> [&#39;String&#39;] predictionsTokensGet()
+>  predictionsTokensGet()
 
 Tokens
 
@@ -137,21 +153,23 @@ Returns an array of token symbols we are currently issuing predictions for.
 
 ### Example
 ```javascript
-var PredictionApi = require('prediction_enterprise_api');
-var defaultClient = PredictionApi.ApiClient.instance;
+const PredictionApi = require('prediction_enterprise_api')
+const defaultClient = PredictionApi.ApiClient.instance
 
 // Configure API key authorization: Authorization
-var Authorization = defaultClient.authentications['Authorization'];
-Authorization.apiKey = 'YOUR API KEY';
+const Authorization = defaultClient.authentications['Authorization']
+Authorization.apiKey = 'YOUR API KEY'
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionApi.PredictionsApi();
-apiInstance.predictionsTokensGet().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
+const apiInstance = new PredictionApi.PredictionsApi()
+apiInstance.predictionsTokensGet()
+  .then(data => {
+    console.log('API called successfully. Returned data: ' + data)
+  })
+  .catch(error => {
+    console.error(error)
+  })
 
 ```
 
@@ -170,4 +188,3 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
