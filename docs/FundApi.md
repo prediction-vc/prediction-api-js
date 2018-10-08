@@ -53,7 +53,19 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FundTrades**](FundTrades.md)
+Object with key `data`
+#### Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**token** | **String** | tokens traded with | [optional]
+**entryDate** | **DateTime** | trade entry datetime | [optional]
+**exitDate** | **DateTime** | trade exit datetime | [optional]
+**gain** | **Float** | trade gain percentage | [optional]
+**notionalTraded** | **Float** | notional amount traded with | [optional]
+**direction** | **String** | short/long | [optional]
+**entryValue** | **Float** | value of the token when it entered the portfolio | [optional]
+**exitValue** | **Float** | value of the token when it left the portfolio | [optional]
+
 
 ### Authorization
 
@@ -66,29 +78,29 @@ Name | Type | Description  | Notes
 
 <a name="fundTradesTokensGet"></a>
 # **fundTradesTokensGet**
-> [&#39;String&#39;] fundTradesTokensGet()
-
-Traded tokens
+> fundTradesTokensGet()
 
 Traded tokens
 
 ### Example
 ```javascript
-var PredictionApi = require('prediction_enterprise_api');
-var defaultClient = PredictionApi.ApiClient.instance;
+const PredictionApi = require('prediction_enterprise_api')
+const defaultClient = PredictionApi.ApiClient.instance
 
 // Configure API key authorization: Authorization
-var Authorization = defaultClient.authentications['Authorization'];
-Authorization.apiKey = 'YOUR API KEY';
+const Authorization = defaultClient.authentications['Authorization']
+Authorization.apiKey = 'YOUR API KEY'
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionApi.FundApi();
-apiInstance.fundTradesTokensGet().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
+const apiInstance = new PredictionApi.FundApi()
+apiInstance.fundTradesTokensGet()
+  .then(data => {
+    console.log('API called successfully. Returned data: ' + data)
+  })
+  .catch(error => {
+    console.error(error)
+  })
 
 ```
 
