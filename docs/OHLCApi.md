@@ -9,39 +9,36 @@ Method | HTTP request | Description
 
 <a name="ohlcGet"></a>
 # **ohlcGet**
-> Ohlc ohlcGet(symbol, from, to, opts)
-
-OHLC Data
+> ohlcGet(symbol, from, to, opts)
 
 OHLC Data
 
 ### Example
 ```javascript
-var PredictionApi = require('prediction_enterprise_api');
-var defaultClient = PredictionApi.ApiClient.instance;
+const PredictionApi = require('prediction_enterprise_api')
+const defaultClient = PredictionApi.ApiClient.instance
 
 // Configure API key authorization: Authorization
-var Authorization = defaultClient.authentications['Authorization'];
+const Authorization = defaultClient.authentications['Authorization']
 Authorization.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Authorization.apiKeyPrefix = 'Token';
 
-var apiInstance = new PredictionApi.OHLCApi();
+const apiInstance = new PredictionApi.OHLCApi()
 
-var symbol = "symbol_example"; // String | token symbol, e.g. ETH
-
-var from = "from_example"; // String | historical data from this date, e.g 2018-09-01.
-
-var to = "to_example"; // String | historical data till this date, e.g 2018-09-01.
-
-var opts = { 
-  'limit': "limit_example" // String | results limit, default 10
-};
-apiInstance.ohlcGet(symbol, from, to, opts).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
-}, function(error) {
-  console.error(error);
-});
+const symbol = 'ETH' // String | token symbol
+const from = '2018-09-01' // Date | historical data from this date
+const to = '2018-09-01' // Date | historical data till this date
+const opts = {
+  'limit': '10' // String | results limit, default 10
+}
+apiInstance.ohlcGet(symbol, from, to, opts)
+  .then(data => {
+    console.log('API called successfully. Returned data: ' + data)
+  })
+  .catch(error => {
+    console.error(error)
+  })
 
 ```
 
@@ -49,14 +46,24 @@ apiInstance.ohlcGet(symbol, from, to, opts).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **String**| token symbol, e.g. ETH | 
- **from** | **String**| historical data from this date, e.g 2018-09-01. | 
- **to** | **String**| historical data till this date, e.g 2018-09-01. | 
- **limit** | **String**| results limit, default 10 | [optional] 
+ **symbol** | **String**| token symbol, e.g. ETH |
+ **from** | **String**| historical data from this date, e.g 2018-09-01. |
+ **to** | **String**| historical data till this date, e.g 2018-09-01. |
+ **limit** | **String**| results limit, default 10 | [optional]
 
 ### Return type
 
-[**Ohlc**](Ohlc.md)
+Object with key `data`
+#### Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**open** | **Object** | open price in USD | [optional]
+**high** | **Object** | high price in USD | [optional]
+**low** | **Object** | low price in USD | [optional]
+**close** | **Object** | close price in USD | [optional]
+**volume** | **Object** | token volume for the past minute | [optional]
+**timestamp** | **Object** | datetime | [optional]
+
 
 ### Authorization
 
@@ -66,4 +73,3 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
