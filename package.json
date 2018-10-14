@@ -1,5 +1,5 @@
 {
-  "name": "prediction-api-js",
+  "name": "@predictionvc/prediction-api",
   "version": "1.0.0",
   "description": "Prediction Enterprise API sdk in Javascript",
   "license": "MIT",
@@ -17,5 +17,28 @@
     "mocha": "~2.3.4",
     "sinon": "1.17.3",
     "expect.js": "~0.3.1"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prediction-vc/prediction-api-js.git"
+  },
+  "keywords": [
+    "predictions",
+    "crypto",
+    "bitcoin",
+    "ethereum",
+    "litecoin",
+    "eos",
+    "price",
+    "predictions"
+  ],
+  "author": "PredictionVC",
+  "bugs": {
+    "url": "https://github.com/prediction-vc/prediction-api-js/issues"
+  },
+  "homepage": "https://github.com/prediction-vc/prediction-api-js#readme"
 }

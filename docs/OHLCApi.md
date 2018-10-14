@@ -21,8 +21,6 @@ const defaultClient = PredictionApi.ApiClient.instance
 // Configure API key authorization: Authorization
 const Authorization = defaultClient.authentications['Authorization']
 Authorization.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Authorization.apiKeyPrefix = 'Token';
 
 const apiInstance = new PredictionApi.OHLCApi()
 
@@ -34,7 +32,8 @@ const opts = {
 }
 apiInstance.ohlcGet(symbol, from, to, opts)
   .then(data => {
-    console.log('API called successfully. Returned data: ' + data)
+    console.log('API called successfully. Returned data: ')
+    console.log(data)
   })
   .catch(error => {
     console.error(error)

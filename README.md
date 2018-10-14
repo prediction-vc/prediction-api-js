@@ -8,7 +8,7 @@ We are proud to introduce our 1.0.0 version of Prediction Enterprise API.  It is
 ## Installation
 
 ```shell
-npm install prediction-api --save
+npm i @predictionvc/prediction-api
 ```
 
 ## Getting Started
