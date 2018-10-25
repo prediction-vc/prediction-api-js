@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Predictions', 'model/PredictionsAccuracy'], factory);
+    define(['ApiClient', 'model/Predictions', 'model/PredictionsAccuracy', 'model/PredictionsTokens'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Predictions'), require('../model/PredictionsAccuracy'));
+    module.exports = factory(require('../ApiClient'), require('../model/Predictions'), require('../model/PredictionsAccuracy'), require('../model/PredictionsTokens'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.PredictionsApi = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Predictions, root.PredictionEnterpriseApi.PredictionsAccuracy);
+    root.PredictionEnterpriseApi.PredictionsApi = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Predictions, root.PredictionEnterpriseApi.PredictionsAccuracy, root.PredictionEnterpriseApi.PredictionsTokens);
   }
-}(this, function(ApiClient, Predictions, PredictionsAccuracy) {
+}(this, function(ApiClient, Predictions, PredictionsAccuracy, PredictionsTokens) {
   'use strict';
 
   /**
@@ -51,40 +51,28 @@
     /**
      * Accuracy
      * Returns a list of accuracies of our predictions, calculated daily.  We measure prediction accuracy by analyzing whether or not our prediction target has been reached once within the time frame we assign; this simulates a limit order getting filled at our predicted price. 
-     * @param {String} symbol token symbol, e.g. ETH
-     * @param {String} from predictions accuracty data from, e.g 2018-09-01.
-     * @param {String} to predictions accuracy data to, e.g 2018-09-05.
+     * @param {String} from predictions accuracy data from, e.g 2018-09-01.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.limit results limit, default 10
+     * @param {String} opts.limit results limit, default 100
+     * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PredictionsAccuracy} and HTTP response
      */
-    this.predictionsAccuracyGetWithHttpInfo = function(symbol, from, to, opts) {
+    this.predictionsAccuracyGetWithHttpInfo = function(from, opts) {
       opts = opts || {};
       var postBody = null;
-
-      // verify the required parameter 'symbol' is set
-      if (symbol === undefined || symbol === null) {
-        throw new Error("Missing the required parameter 'symbol' when calling predictionsAccuracyGet");
-      }
 
       // verify the required parameter 'from' is set
       if (from === undefined || from === null) {
         throw new Error("Missing the required parameter 'from' when calling predictionsAccuracyGet");
       }
 
-      // verify the required parameter 'to' is set
-      if (to === undefined || to === null) {
-        throw new Error("Missing the required parameter 'to' when calling predictionsAccuracyGet");
-      }
-
 
       var pathParams = {
       };
       var queryParams = {
-        'symbol': symbol,
         'from': from,
-        'to': to,
         'limit': opts['limit'],
+        'sort': opts['sort'],
       };
       var collectionQueryParams = {
       };
@@ -108,15 +96,14 @@
     /**
      * Accuracy
      * Returns a list of accuracies of our predictions, calculated daily.  We measure prediction accuracy by analyzing whether or not our prediction target has been reached once within the time frame we assign; this simulates a limit order getting filled at our predicted price. 
-     * @param {String} symbol token symbol, e.g. ETH
-     * @param {String} from predictions accuracty data from, e.g 2018-09-01.
-     * @param {String} to predictions accuracy data to, e.g 2018-09-05.
+     * @param {String} from predictions accuracy data from, e.g 2018-09-01.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.limit results limit, default 10
+     * @param {String} opts.limit results limit, default 100
+     * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PredictionsAccuracy}
      */
-    this.predictionsAccuracyGet = function(symbol, from, to, opts) {
-      return this.predictionsAccuracyGetWithHttpInfo(symbol, from, to, opts)
+    this.predictionsAccuracyGet = function(from, opts) {
+      return this.predictionsAccuracyGetWithHttpInfo(from, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -125,12 +112,13 @@
 
     /**
      * Predictions
-     * Returns a list of predictions for the given symbol and given date. 
+     * Returns a list of token price predictions for the given symbol and given date. 
      * @param {String} symbol token symbol, e.g. &#x60;ETH&#x60;
      * @param {Object} opts Optional parameters
      * @param {String} opts._date date of prediction, e.g &#x60;2018-09-01&#x60;. If not specified, predictions for today are returned.
      * @param {Boolean} opts.latest Retrieve only the latest prediction for the given date, default false
-     * @param {String} opts.limit results limit, default 10
+     * @param {String} opts.limit results limit, default 100
+     * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Predictions} and HTTP response
      */
     this.predictionsGetWithHttpInfo = function(symbol, opts) {
@@ -150,6 +138,7 @@
         'date': opts['_date'],
         'latest': opts['latest'],
         'limit': opts['limit'],
+        'sort': opts['sort'],
       };
       var collectionQueryParams = {
       };
@@ -172,12 +161,13 @@
 
     /**
      * Predictions
-     * Returns a list of predictions for the given symbol and given date. 
+     * Returns a list of token price predictions for the given symbol and given date. 
      * @param {String} symbol token symbol, e.g. &#x60;ETH&#x60;
      * @param {Object} opts Optional parameters
      * @param {String} opts._date date of prediction, e.g &#x60;2018-09-01&#x60;. If not specified, predictions for today are returned.
      * @param {Boolean} opts.latest Retrieve only the latest prediction for the given date, default false
-     * @param {String} opts.limit results limit, default 10
+     * @param {String} opts.limit results limit, default 100
+     * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Predictions}
      */
     this.predictionsGet = function(symbol, opts) {
@@ -191,7 +181,7 @@
     /**
      * Tokens
      * Returns an array of token symbols we are currently issuing predictions for.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<'String'>} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PredictionsTokens} and HTTP response
      */
     this.predictionsTokensGetWithHttpInfo = function() {
       var postBody = null;
@@ -211,7 +201,7 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ['String'];
+      var returnType = PredictionsTokens;
 
       return this.apiClient.callApi(
         '/predictions/tokens', 'GET',
@@ -223,7 +213,7 @@
     /**
      * Tokens
      * Returns an array of token symbols we are currently issuing predictions for.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<'String'>}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PredictionsTokens}
      */
     this.predictionsTokensGet = function() {
       return this.predictionsTokensGetWithHttpInfo()

@@ -52,13 +52,13 @@
      * OHLC Data
      * OHLC Data
      * @param {String} symbol token symbol, e.g. ETH
-     * @param {String} from historical data from this date, e.g 2018-09-01.
-     * @param {String} to historical data till this date, e.g 2018-09-01.
+     * @param {String} from historical data from this date (UTC), e.g 2018-09-01T08:29:38.213Z.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.limit results limit, default 10
+     * @param {String} opts.limit results limit, default 100
+     * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Ohlc} and HTTP response
      */
-    this.ohlcGetWithHttpInfo = function(symbol, from, to, opts) {
+    this.ohlcGetWithHttpInfo = function(symbol, from, opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -72,19 +72,14 @@
         throw new Error("Missing the required parameter 'from' when calling ohlcGet");
       }
 
-      // verify the required parameter 'to' is set
-      if (to === undefined || to === null) {
-        throw new Error("Missing the required parameter 'to' when calling ohlcGet");
-      }
-
 
       var pathParams = {
       };
       var queryParams = {
         'symbol': symbol,
         'from': from,
-        'to': to,
         'limit': opts['limit'],
+        'sort': opts['sort'],
       };
       var collectionQueryParams = {
       };
@@ -109,14 +104,14 @@
      * OHLC Data
      * OHLC Data
      * @param {String} symbol token symbol, e.g. ETH
-     * @param {String} from historical data from this date, e.g 2018-09-01.
-     * @param {String} to historical data till this date, e.g 2018-09-01.
+     * @param {String} from historical data from this date (UTC), e.g 2018-09-01T08:29:38.213Z.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.limit results limit, default 10
+     * @param {String} opts.limit results limit, default 100
+     * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Ohlc}
      */
-    this.ohlcGet = function(symbol, from, to, opts) {
-      return this.ohlcGetWithHttpInfo(symbol, from, to, opts)
+    this.ohlcGet = function(symbol, from, opts) {
+      return this.ohlcGetWithHttpInfo(symbol, from, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

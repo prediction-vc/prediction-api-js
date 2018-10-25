@@ -97,7 +97,7 @@
   }
 
   /**
-   * tokens traded with.
+   * base and quote currencies traded with, default quote currency is USD, if no quote currency specified assume USD
    * @member {String} token
    */
   exports.prototype['token'] = undefined;
@@ -112,7 +112,7 @@
    */
   exports.prototype['exit_date'] = undefined;
   /**
-   * trade gain in percents
+   * trade gain percentage
    * @member {Object} gain
    */
   exports.prototype['gain'] = undefined;
@@ -122,7 +122,7 @@
    */
   exports.prototype['notional_traded'] = undefined;
   /**
-   * token traded with
+   * short/long
    * @member {String} direction
    */
   exports.prototype['direction'] = undefined;

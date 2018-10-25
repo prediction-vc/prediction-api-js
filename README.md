@@ -2,6 +2,8 @@
 
 We are proud to introduce our 1.0.0 version of Prediction Enterprise API.  It is our first step to sharing our data with the world and being more transparent about our predictions, their accuracy and our fund trades and performance.  In the case you are missing some data please drop us a line at enterprise@prediction.vc. We will be happy to answer your questions and implement new features for you.  [Platform FAQ](https://predictionvc.freshdesk.com/support/solutions/)
 
+Check out the docs at https://enterprise.prediction.vc/docs
+
 - API version: 1.0.0
 - Package version: 1.0.0
 

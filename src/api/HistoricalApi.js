@@ -52,30 +52,20 @@
      * Historical Data
      * Historical Data
      * @param {String} symbol token symbol, e.g. &#x60;ETH&#x60;
-     * @param {String} from historical data from this date, e.g &#x60;2018-09-01&#x60;.
-     * @param {String} to historical data till this date, e.g &#x60;2018-09-01&#x60;.
-     * @param {String} cols Comma separted list of columns to return. e.g. &#x60;cols&#x3D;usdPrice,volume,timeStamp&#x60; Available columns are listed in the table above.
+     * @param {String} cols Comma separted list of columns to return. e.g. &#x60;cols&#x3D;usdPrice,marketCap,machineRatings&#x60; Available columns are listed in the table above.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.limit results limit, default 10
+     * @param {String} opts.from historical data from this date, e.g &#x60;2018-09-01&#x60;.
+     * @param {String} opts.limit results limit, default 100
+     * @param {String} opts.sort sort by entry or exit, e.g. &#x60;sort&#x3D;entry:ASC&#x60;, default sort DESC
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Historical} and HTTP response
      */
-    this.historicalGetWithHttpInfo = function(symbol, from, to, cols, opts) {
+    this.historicalGetWithHttpInfo = function(symbol, cols, opts) {
       opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'symbol' is set
       if (symbol === undefined || symbol === null) {
         throw new Error("Missing the required parameter 'symbol' when calling historicalGet");
-      }
-
-      // verify the required parameter 'from' is set
-      if (from === undefined || from === null) {
-        throw new Error("Missing the required parameter 'from' when calling historicalGet");
-      }
-
-      // verify the required parameter 'to' is set
-      if (to === undefined || to === null) {
-        throw new Error("Missing the required parameter 'to' when calling historicalGet");
       }
 
       // verify the required parameter 'cols' is set
@@ -88,10 +78,10 @@
       };
       var queryParams = {
         'symbol': symbol,
-        'from': from,
-        'to': to,
         'cols': cols,
+        'from': opts['from'],
         'limit': opts['limit'],
+        'sort': opts['sort'],
       };
       var collectionQueryParams = {
       };
@@ -116,15 +106,15 @@
      * Historical Data
      * Historical Data
      * @param {String} symbol token symbol, e.g. &#x60;ETH&#x60;
-     * @param {String} from historical data from this date, e.g &#x60;2018-09-01&#x60;.
-     * @param {String} to historical data till this date, e.g &#x60;2018-09-01&#x60;.
-     * @param {String} cols Comma separted list of columns to return. e.g. &#x60;cols&#x3D;usdPrice,volume,timeStamp&#x60; Available columns are listed in the table above.
+     * @param {String} cols Comma separted list of columns to return. e.g. &#x60;cols&#x3D;usdPrice,marketCap,machineRatings&#x60; Available columns are listed in the table above.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.limit results limit, default 10
+     * @param {String} opts.from historical data from this date, e.g &#x60;2018-09-01&#x60;.
+     * @param {String} opts.limit results limit, default 100
+     * @param {String} opts.sort sort by entry or exit, e.g. &#x60;sort&#x3D;entry:ASC&#x60;, default sort DESC
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Historical}
      */
-    this.historicalGet = function(symbol, from, to, cols, opts) {
-      return this.historicalGetWithHttpInfo(symbol, from, to, cols, opts)
+    this.historicalGet = function(symbol, cols, opts) {
+      return this.historicalGetWithHttpInfo(symbol, cols, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

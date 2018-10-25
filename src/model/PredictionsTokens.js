@@ -25,7 +25,7 @@
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.Datum9 = factory(root.PredictionEnterpriseApi.ApiClient);
+    root.PredictionEnterpriseApi.PredictionsTokens = factory(root.PredictionEnterpriseApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,63 +34,45 @@
 
 
   /**
-   * The Datum9 model module.
-   * @module model/Datum9
+   * The PredictionsTokens model module.
+   * @module model/PredictionsTokens
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Datum9</code>.
-   * @alias module:model/Datum9
+   * Constructs a new <code>PredictionsTokens</code>.
+   * @alias module:model/PredictionsTokens
    * @class
    */
   var exports = function() {
     var _this = this;
 
 
-
-
   };
 
   /**
-   * Constructs a <code>Datum9</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>PredictionsTokens</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Datum9} obj Optional instance to populate.
-   * @return {module:model/Datum9} The populated <code>Datum9</code> instance.
+   * @param {module:model/PredictionsTokens} obj Optional instance to populate.
+   * @return {module:model/PredictionsTokens} The populated <code>PredictionsTokens</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('accuracy')) {
-        obj['accuracy'] = ApiClient.convertToType(data['accuracy'], 'String');
-      }
-      if (data.hasOwnProperty('tokens')) {
-        obj['tokens'] = ApiClient.convertToType(data['tokens'], 'String');
-      }
-      if (data.hasOwnProperty('timestamp')) {
-        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], Object);
+      if (data.hasOwnProperty('data')) {
+        obj['data'] = ApiClient.convertToType(data['data'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * Average accuracy over given tokens
-   * @member {String} accuracy
+   * 
+   * @member {Array.<String>} data
    */
-  exports.prototype['accuracy'] = undefined;
-  /**
-   * Tokens the predictions were made on
-   * @member {String} tokens
-   */
-  exports.prototype['tokens'] = undefined;
-  /**
-   * time of the prediction accuracy calculation
-   * @member {Object} timestamp
-   */
-  exports.prototype['timestamp'] = undefined;
+  exports.prototype['data'] = undefined;
 
 
 

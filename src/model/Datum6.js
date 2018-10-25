@@ -25,7 +25,7 @@
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.Datum3 = factory(root.PredictionEnterpriseApi.ApiClient);
+    root.PredictionEnterpriseApi.Datum6 = factory(root.PredictionEnterpriseApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The Datum3 model module.
-   * @module model/Datum3
+   * The Datum6 model module.
+   * @module model/Datum6
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Datum3</code>.
-   * @alias module:model/Datum3
+   * Constructs a new <code>Datum6</code>.
+   * @alias module:model/Datum6
    * @class
    */
   var exports = function() {
@@ -50,21 +50,33 @@
 
 
 
+
+
+
   };
 
   /**
-   * Constructs a <code>Datum3</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Datum6</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Datum3} obj Optional instance to populate.
-   * @return {module:model/Datum3} The populated <code>Datum3</code> instance.
+   * @param {module:model/Datum6} obj Optional instance to populate.
+   * @return {module:model/Datum6} The populated <code>Datum6</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('usdPrice')) {
-        obj['usdPrice'] = ApiClient.convertToType(data['usdPrice'], Object);
+      if (data.hasOwnProperty('open')) {
+        obj['open'] = ApiClient.convertToType(data['open'], Object);
+      }
+      if (data.hasOwnProperty('high')) {
+        obj['high'] = ApiClient.convertToType(data['high'], Object);
+      }
+      if (data.hasOwnProperty('low')) {
+        obj['low'] = ApiClient.convertToType(data['low'], Object);
+      }
+      if (data.hasOwnProperty('close')) {
+        obj['close'] = ApiClient.convertToType(data['close'], Object);
       }
       if (data.hasOwnProperty('volume')) {
         obj['volume'] = ApiClient.convertToType(data['volume'], Object);
@@ -77,12 +89,27 @@
   }
 
   /**
-   * token price in USD
-   * @member {Object} usdPrice
+   * open price in USD
+   * @member {Object} open
    */
-  exports.prototype['usdPrice'] = undefined;
+  exports.prototype['open'] = undefined;
   /**
-   * token volume for the past 24 hours
+   * high price in USD
+   * @member {Object} high
+   */
+  exports.prototype['high'] = undefined;
+  /**
+   * low price in USD
+   * @member {Object} low
+   */
+  exports.prototype['low'] = undefined;
+  /**
+   * close price in USD
+   * @member {Object} close
+   */
+  exports.prototype['close'] = undefined;
+  /**
+   * token volume for the past minute
    * @member {Object} volume
    */
   exports.prototype['volume'] = undefined;

@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Datum', 'model/Datum3', 'model/Datum5', 'model/Datum7', 'model/Datum9', 'model/FundTrades', 'model/Historical', 'model/Ohlc', 'model/Predictions', 'model/PredictionsAccuracy', 'api/FundApi', 'api/HistoricalApi', 'api/OHLCApi', 'api/PredictionsApi'], factory);
+    define(['ApiClient', 'model/Datum', 'model/Datum11', 'model/Datum4', 'model/Datum6', 'model/Datum8', 'model/FundTrades', 'model/FundTradesTokens', 'model/Historical', 'model/Ohlc', 'model/Predictions', 'model/PredictionsAccuracy', 'model/PredictionsTokens', 'api/FundApi', 'api/HistoricalApi', 'api/OHLCApi', 'api/PredictionsApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Datum'), require('./model/Datum3'), require('./model/Datum5'), require('./model/Datum7'), require('./model/Datum9'), require('./model/FundTrades'), require('./model/Historical'), require('./model/Ohlc'), require('./model/Predictions'), require('./model/PredictionsAccuracy'), require('./api/FundApi'), require('./api/HistoricalApi'), require('./api/OHLCApi'), require('./api/PredictionsApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Datum'), require('./model/Datum11'), require('./model/Datum4'), require('./model/Datum6'), require('./model/Datum8'), require('./model/FundTrades'), require('./model/FundTradesTokens'), require('./model/Historical'), require('./model/Ohlc'), require('./model/Predictions'), require('./model/PredictionsAccuracy'), require('./model/PredictionsTokens'), require('./api/FundApi'), require('./api/HistoricalApi'), require('./api/OHLCApi'), require('./api/PredictionsApi'));
   }
-}(function(ApiClient, Datum, Datum3, Datum5, Datum7, Datum9, FundTrades, Historical, Ohlc, Predictions, PredictionsAccuracy, FundApi, HistoricalApi, OHLCApi, PredictionsApi) {
+}(function(ApiClient, Datum, Datum11, Datum4, Datum6, Datum8, FundTrades, FundTradesTokens, Historical, Ohlc, Predictions, PredictionsAccuracy, PredictionsTokens, FundApi, HistoricalApi, OHLCApi, PredictionsApi) {
   'use strict';
 
   /**
@@ -67,30 +67,35 @@
      */
     Datum: Datum,
     /**
-     * The Datum3 model constructor.
-     * @property {module:model/Datum3}
+     * The Datum11 model constructor.
+     * @property {module:model/Datum11}
      */
-    Datum3: Datum3,
+    Datum11: Datum11,
     /**
-     * The Datum5 model constructor.
-     * @property {module:model/Datum5}
+     * The Datum4 model constructor.
+     * @property {module:model/Datum4}
      */
-    Datum5: Datum5,
+    Datum4: Datum4,
     /**
-     * The Datum7 model constructor.
-     * @property {module:model/Datum7}
+     * The Datum6 model constructor.
+     * @property {module:model/Datum6}
      */
-    Datum7: Datum7,
+    Datum6: Datum6,
     /**
-     * The Datum9 model constructor.
-     * @property {module:model/Datum9}
+     * The Datum8 model constructor.
+     * @property {module:model/Datum8}
      */
-    Datum9: Datum9,
+    Datum8: Datum8,
     /**
      * The FundTrades model constructor.
      * @property {module:model/FundTrades}
      */
     FundTrades: FundTrades,
+    /**
+     * The FundTradesTokens model constructor.
+     * @property {module:model/FundTradesTokens}
+     */
+    FundTradesTokens: FundTradesTokens,
     /**
      * The Historical model constructor.
      * @property {module:model/Historical}
@@ -111,6 +116,11 @@
      * @property {module:model/PredictionsAccuracy}
      */
     PredictionsAccuracy: PredictionsAccuracy,
+    /**
+     * The PredictionsTokens model constructor.
+     * @property {module:model/PredictionsTokens}
+     */
+    PredictionsTokens: PredictionsTokens,
     /**
      * The FundApi service constructor.
      * @property {module:api/FundApi}

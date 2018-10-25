@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Datum7'], factory);
+    define(['ApiClient', 'model/Datum8'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Datum7'));
+    module.exports = factory(require('../ApiClient'), require('./Datum8'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.Predictions = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Datum7);
+    root.PredictionEnterpriseApi.Predictions = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Datum8);
   }
-}(this, function(ApiClient, Datum7) {
+}(this, function(ApiClient, Datum8) {
   'use strict';
 
 
@@ -62,7 +62,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = ApiClient.convertToType(data['data'], [Datum7]);
+        obj['data'] = ApiClient.convertToType(data['data'], [Datum8]);
       }
     }
     return obj;
@@ -70,7 +70,7 @@
 
   /**
    * 
-   * @member {Array.<module:model/Datum7>} data
+   * @member {Array.<module:model/Datum8>} data
    */
   exports.prototype['data'] = undefined;
 
