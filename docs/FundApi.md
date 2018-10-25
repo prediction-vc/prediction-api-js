@@ -75,9 +75,9 @@ Name | Type | Description | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="fundTradesTokensGet"></a>
-# **fundTradesTokensGet**
-> fundTradesTokensGet()
+<a name="fundTradesPairsGet"></a>
+# **fundTradesPairsGet**
+> fundTradesPairsGet()
 
 Traded tokens
 
@@ -91,7 +91,7 @@ const Authorization = defaultClient.authentications['Authorization']
 Authorization.apiKey = 'YOUR API KEY'
 
 const apiInstance = new PredictionApi.FundApi()
-apiInstance.fundTradesTokensGet()
+apiInstance.fundTradesPairsGet()
   .then(data => {
     console.log('API called successfully. Returned data: ')
     console.log(data)

@@ -58,7 +58,7 @@ All URIs are relative to *https://enterprise.prediction.vc/api/*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *PredictionApi.FundApi* | [**fundTradesGet**](docs/FundApi.md#fundTradesGet) | **GET** /fund/trades | Prediction Fund trade data
-*PredictionApi.FundApi* | [**fundTradesTokensGet**](docs/FundApi.md#fundTradesTokensGet) | **GET** /fund/trades/tokens | Traded tokens
+*PredictionApi.FundApi* | [**fundTradesPairsGet**](docs/FundApi.md#fundTradesTokensGet) | **GET** /fund/trades/tokens | Traded tokens
 *PredictionApi.HistoricalApi* | [**historicalGet**](docs/HistoricalApi.md#historicalGet) | **GET** /historical | Historical Data
 *PredictionApi.OHLCApi* | [**ohlcGet**](docs/OHLCApi.md#ohlcGet) | **GET** /ohlc | OHLC Data
 *PredictionApi.PredictionsApi* | [**predictionsAccuracyGet**](docs/PredictionsApi.md#predictionsAccuracyGet) | **GET** /predictions/accuracy | Accuracy
