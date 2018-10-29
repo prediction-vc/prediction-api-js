@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Datum6'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Datum6'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.Ohlc = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Datum6);
+    root.PredictionEnterpriseApi.Ohlc = factory(root.PredictionEnterpriseApi.ApiClient);
   }
-}(this, function(ApiClient, Datum6) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -48,6 +48,11 @@
     var _this = this;
 
 
+
+
+
+
+
   };
 
   /**
@@ -61,18 +66,58 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('data')) {
-        obj['data'] = ApiClient.convertToType(data['data'], [Datum6]);
+      if (data.hasOwnProperty('open')) {
+        obj['open'] = ApiClient.convertToType(data['open'], Object);
+      }
+      if (data.hasOwnProperty('high')) {
+        obj['high'] = ApiClient.convertToType(data['high'], Object);
+      }
+      if (data.hasOwnProperty('low')) {
+        obj['low'] = ApiClient.convertToType(data['low'], Object);
+      }
+      if (data.hasOwnProperty('close')) {
+        obj['close'] = ApiClient.convertToType(data['close'], Object);
+      }
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], Object);
+      }
+      if (data.hasOwnProperty('timestamp')) {
+        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], Object);
       }
     }
     return obj;
   }
 
   /**
-   * 
-   * @member {Array.<module:model/Datum6>} data
+   * open price in USD
+   * @member {Object} open
    */
-  exports.prototype['data'] = undefined;
+  exports.prototype['open'] = undefined;
+  /**
+   * high price in USD
+   * @member {Object} high
+   */
+  exports.prototype['high'] = undefined;
+  /**
+   * low price in USD
+   * @member {Object} low
+   */
+  exports.prototype['low'] = undefined;
+  /**
+   * close price in USD
+   * @member {Object} close
+   */
+  exports.prototype['close'] = undefined;
+  /**
+   * token volume for the past minute
+   * @member {Object} volume
+   */
+  exports.prototype['volume'] = undefined;
+  /**
+   * datetime
+   * @member {Object} timestamp
+   */
+  exports.prototype['timestamp'] = undefined;
 
 
 

@@ -4,13 +4,13 @@ All URIs are relative to *https://enterprise.prediction.vc/api/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**fundTradesGet**](FundApi.md#fundTradesGet) | **GET** /fund/trades | Prediction Fund trade data
-[**fundTradesTokensGet**](FundApi.md#fundTradesTokensGet) | **GET** /fund/trades/tokens | Traded tokens
+[**fundTradesGet**](FundApi.md#fundTradesGet) | **GET** /funds/trades | Prediction Fund trade data
+[**fundTradesTokensGet**](FundApi.md#fundTradesTokensGet) | **GET** /funds/trades/tokens | Traded tokens
 
 
-<a name="fundTradesGet"></a>
-# **fundTradesGet**
-> fundTradesGet(opts)
+<a name="fundsSimfundPairsGet"></a>
+# **fundsSimfundPairsGet**
+> fundsSimfundPairsGet(opts)
 
 Prediction Fund trade data
 
@@ -31,7 +31,7 @@ const opts = {
   'exit': '2018-09-01', // {Date} exit date for trades
   'direction': 'short' // {String} short/long
 }
-api.fundTradesGet(opts)
+api.fundsSimfundPairsGet(opts)
   .then(data => {
     console.log('API called successfully. Returned data: ')
     console.log(data)
@@ -75,9 +75,9 @@ Name | Type | Description | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="fundTradesPairsGet"></a>
-# **fundTradesPairsGet**
-> fundTradesPairsGet()
+<a name="fundsSimfundTradesGet"></a>
+# **fundsSimfundTradesGet**
+> fundsSimfundTradesGet()
 
 Traded tokens
 
@@ -91,7 +91,7 @@ const Authorization = defaultClient.authentications['Authorization']
 Authorization.apiKey = 'YOUR API KEY'
 
 const apiInstance = new PredictionApi.FundApi()
-apiInstance.fundTradesPairsGet()
+apiInstance.fundsSimfundTradesGet()
   .then(data => {
     console.log('API called successfully. Returned data: ')
     console.log(data)

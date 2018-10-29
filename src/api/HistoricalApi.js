@@ -57,7 +57,7 @@
      * @param {String} opts.from historical data from this date, e.g &#x60;2018-09-01&#x60;.
      * @param {String} opts.limit results limit, default 100
      * @param {String} opts.sort sort by entry or exit, e.g. &#x60;sort&#x3D;entry:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Historical} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Historical>} and HTTP response
      */
     this.historicalGetWithHttpInfo = function(symbol, cols, opts) {
       opts = opts || {};
@@ -93,7 +93,7 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = Historical;
+      var returnType = [Historical];
 
       return this.apiClient.callApi(
         '/historical', 'GET',
@@ -111,7 +111,7 @@
      * @param {String} opts.from historical data from this date, e.g &#x60;2018-09-01&#x60;.
      * @param {String} opts.limit results limit, default 100
      * @param {String} opts.sort sort by entry or exit, e.g. &#x60;sort&#x3D;entry:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Historical}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Historical>}
      */
     this.historicalGet = function(symbol, cols, opts) {
       return this.historicalGetWithHttpInfo(symbol, cols, opts)

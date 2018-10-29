@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/FundTrades', 'model/FundTradesTokens'], factory);
+    define(['ApiClient', 'model/FundTrade'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/FundTrades'), require('../model/FundTradesTokens'));
+    module.exports = factory(require('../ApiClient'), require('../model/FundTrade'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.FundApi = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.FundTrades, root.PredictionEnterpriseApi.FundTradesTokens);
+    root.PredictionEnterpriseApi.FundApi = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.FundTrade);
   }
-}(this, function(ApiClient, FundTrades, FundTradesTokens) {
+}(this, function(ApiClient, FundTrade) {
   'use strict';
 
   /**
@@ -49,6 +49,51 @@
 
 
     /**
+     * Traded token pairs
+     * Traded token pairs at The Simulated pPrediction fund.  base/quote currencies traded with  default quote currency is USD, if no quote currency specified assume USD 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<'String'>} and HTTP response
+     */
+    this.fundsSimfundPairsGetWithHttpInfo = function() {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Authorization'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ['String'];
+
+      return this.apiClient.callApi(
+        '/funds/simfund/pairs', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Traded token pairs
+     * Traded token pairs at The Simulated pPrediction fund.  base/quote currencies traded with  default quote currency is USD, if no quote currency specified assume USD 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<'String'>}
+     */
+    this.fundsSimfundPairsGet = function() {
+      return this.fundsSimfundPairsGetWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Prediction Fund trade data
      * Prediction Fund trade data
      * @param {Object} opts Optional parameters
@@ -56,9 +101,9 @@
      * @param {String} opts.exit exit date for trades, e.g 2018-09-01.
      * @param {String} opts.direction short/long
      * @param {String} opts.sort sort by entry or exit, e.g. &#x60;sort&#x3D;entry:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FundTrades} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/FundTrade>} and HTTP response
      */
-    this.fundTradesGetWithHttpInfo = function(opts) {
+    this.fundsSimfundTradesGetWithHttpInfo = function(opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -81,10 +126,10 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = FundTrades;
+      var returnType = [FundTrade];
 
       return this.apiClient.callApi(
-        '/fund/trades', 'GET',
+        '/funds/simfund/trades', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -98,55 +143,10 @@
      * @param {String} opts.exit exit date for trades, e.g 2018-09-01.
      * @param {String} opts.direction short/long
      * @param {String} opts.sort sort by entry or exit, e.g. &#x60;sort&#x3D;entry:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FundTrades}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/FundTrade>}
      */
-    this.fundTradesGet = function(opts) {
-      return this.fundTradesGetWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Traded token pairs
-     *  base/quote currencies traded with  default quote currency is USD, if no quote currency specified assume USD 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FundTradesTokens} and HTTP response
-     */
-    this.fundTradesPairsGetWithHttpInfo = function() {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['Authorization'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = FundTradesTokens;
-
-      return this.apiClient.callApi(
-        '/fund/trades/pairs', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Traded token pairs
-     *  base/quote currencies traded with  default quote currency is USD, if no quote currency specified assume USD 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FundTradesTokens}
-     */
-    this.fundTradesPairsGet = function() {
-      return this.fundTradesPairsGetWithHttpInfo()
+    this.fundsSimfundTradesGet = function(opts) {
+      return this.fundsSimfundTradesGetWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

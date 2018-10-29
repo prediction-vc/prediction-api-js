@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Predictions', 'model/PredictionsAccuracy', 'model/PredictionsTokens'], factory);
+    define(['ApiClient', 'model/Prediction', 'model/PredictionsAccuracy'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Predictions'), require('../model/PredictionsAccuracy'), require('../model/PredictionsTokens'));
+    module.exports = factory(require('../ApiClient'), require('../model/Prediction'), require('../model/PredictionsAccuracy'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.PredictionsApi = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Predictions, root.PredictionEnterpriseApi.PredictionsAccuracy, root.PredictionEnterpriseApi.PredictionsTokens);
+    root.PredictionEnterpriseApi.PredictionsApi = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Prediction, root.PredictionEnterpriseApi.PredictionsAccuracy);
   }
-}(this, function(ApiClient, Predictions, PredictionsAccuracy, PredictionsTokens) {
+}(this, function(ApiClient, Prediction, PredictionsAccuracy) {
   'use strict';
 
   /**
@@ -55,7 +55,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.limit results limit, default 100
      * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PredictionsAccuracy} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/PredictionsAccuracy>} and HTTP response
      */
     this.predictionsAccuracyGetWithHttpInfo = function(from, opts) {
       opts = opts || {};
@@ -84,7 +84,7 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = PredictionsAccuracy;
+      var returnType = [PredictionsAccuracy];
 
       return this.apiClient.callApi(
         '/predictions/accuracy', 'GET',
@@ -100,7 +100,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.limit results limit, default 100
      * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PredictionsAccuracy}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/PredictionsAccuracy>}
      */
     this.predictionsAccuracyGet = function(from, opts) {
       return this.predictionsAccuracyGetWithHttpInfo(from, opts)
@@ -119,7 +119,7 @@
      * @param {Boolean} opts.latest Retrieve only the latest prediction for the given date, default false
      * @param {String} opts.limit results limit, default 100
      * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Predictions} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Prediction>} and HTTP response
      */
     this.predictionsGetWithHttpInfo = function(symbol, opts) {
       opts = opts || {};
@@ -150,7 +150,7 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = Predictions;
+      var returnType = [Prediction];
 
       return this.apiClient.callApi(
         '/predictions', 'GET',
@@ -168,7 +168,7 @@
      * @param {Boolean} opts.latest Retrieve only the latest prediction for the given date, default false
      * @param {String} opts.limit results limit, default 100
      * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Predictions}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Prediction>}
      */
     this.predictionsGet = function(symbol, opts) {
       return this.predictionsGetWithHttpInfo(symbol, opts)
@@ -181,7 +181,7 @@
     /**
      * Tokens
      * Returns an array of token symbols we are currently issuing predictions for.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PredictionsTokens} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<'String'>} and HTTP response
      */
     this.predictionsTokensGetWithHttpInfo = function() {
       var postBody = null;
@@ -201,7 +201,7 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = PredictionsTokens;
+      var returnType = ['String'];
 
       return this.apiClient.callApi(
         '/predictions/tokens', 'GET',
@@ -213,7 +213,7 @@
     /**
      * Tokens
      * Returns an array of token symbols we are currently issuing predictions for.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PredictionsTokens}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<'String'>}
      */
     this.predictionsTokensGet = function() {
       return this.predictionsTokensGetWithHttpInfo()

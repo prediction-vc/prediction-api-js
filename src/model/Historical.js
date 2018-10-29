@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Datum4'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Datum4'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.Historical = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Datum4);
+    root.PredictionEnterpriseApi.Historical = factory(root.PredictionEnterpriseApi.ApiClient);
   }
-}(this, function(ApiClient, Datum4) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -48,6 +48,8 @@
     var _this = this;
 
 
+
+
   };
 
   /**
@@ -61,18 +63,34 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('data')) {
-        obj['data'] = ApiClient.convertToType(data['data'], [Datum4]);
+      if (data.hasOwnProperty('usdPrice')) {
+        obj['usdPrice'] = ApiClient.convertToType(data['usdPrice'], Object);
+      }
+      if (data.hasOwnProperty('volume')) {
+        obj['volume'] = ApiClient.convertToType(data['volume'], Object);
+      }
+      if (data.hasOwnProperty('timestamp')) {
+        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], Object);
       }
     }
     return obj;
   }
 
   /**
-   * 
-   * @member {Array.<module:model/Datum4>} data
+   * token price in USD
+   * @member {Object} usdPrice
    */
-  exports.prototype['data'] = undefined;
+  exports.prototype['usdPrice'] = undefined;
+  /**
+   * token volume for the past 24 hours
+   * @member {Object} volume
+   */
+  exports.prototype['volume'] = undefined;
+  /**
+   * datetime
+   * @member {Object} timestamp
+   */
+  exports.prototype['timestamp'] = undefined;
 
 
 

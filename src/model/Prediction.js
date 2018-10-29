@@ -25,7 +25,7 @@
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.Datum4 = factory(root.PredictionEnterpriseApi.ApiClient);
+    root.PredictionEnterpriseApi.Prediction = factory(root.PredictionEnterpriseApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The Datum4 model module.
-   * @module model/Datum4
+   * The Prediction model module.
+   * @module model/Prediction
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Datum4</code>.
-   * @alias module:model/Datum4
+   * Constructs a new <code>Prediction</code>.
+   * @alias module:model/Prediction
    * @class
    */
   var exports = function() {
@@ -50,14 +50,19 @@
 
 
 
+
+
+
+
+
   };
 
   /**
-   * Constructs a <code>Datum4</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Prediction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Datum4} obj Optional instance to populate.
-   * @return {module:model/Datum4} The populated <code>Datum4</code> instance.
+   * @param {module:model/Prediction} obj Optional instance to populate.
+   * @return {module:model/Prediction} The populated <code>Prediction</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -66,8 +71,23 @@
       if (data.hasOwnProperty('usdPrice')) {
         obj['usdPrice'] = ApiClient.convertToType(data['usdPrice'], Object);
       }
-      if (data.hasOwnProperty('volume')) {
-        obj['volume'] = ApiClient.convertToType(data['volume'], Object);
+      if (data.hasOwnProperty('direction')) {
+        obj['direction'] = ApiClient.convertToType(data['direction'], 'String');
+      }
+      if (data.hasOwnProperty('3day')) {
+        obj['3day'] = ApiClient.convertToType(data['3day'], Object);
+      }
+      if (data.hasOwnProperty('target')) {
+        obj['target'] = ApiClient.convertToType(data['target'], 'Boolean');
+      }
+      if (data.hasOwnProperty('7day')) {
+        obj['7day'] = ApiClient.convertToType(data['7day'], Object);
+      }
+      if (data.hasOwnProperty('target7')) {
+        obj['target7'] = ApiClient.convertToType(data['target7'], 'Boolean');
+      }
+      if (data.hasOwnProperty('14day')) {
+        obj['14day'] = ApiClient.convertToType(data['14day'], Object);
       }
       if (data.hasOwnProperty('timestamp')) {
         obj['timestamp'] = ApiClient.convertToType(data['timestamp'], Object);
@@ -77,17 +97,42 @@
   }
 
   /**
-   * token price in USD
+   * token price at the moment of prediction in USD
    * @member {Object} usdPrice
    */
   exports.prototype['usdPrice'] = undefined;
   /**
-   * token volume for the past 24 hours
-   * @member {Object} volume
+   * short or long
+   * @member {String} direction
    */
-  exports.prototype['volume'] = undefined;
+  exports.prototype['direction'] = undefined;
   /**
-   * datetime
+   * 3 day prediction
+   * @member {Object} 3day
+   */
+  exports.prototype['3day'] = undefined;
+  /**
+   * if the 3day prediction came true
+   * @member {Boolean} target
+   */
+  exports.prototype['target'] = undefined;
+  /**
+   * 7 day prediction
+   * @member {Object} 7day
+   */
+  exports.prototype['7day'] = undefined;
+  /**
+   * if the 7day prediction came true
+   * @member {Boolean} target7
+   */
+  exports.prototype['target7'] = undefined;
+  /**
+   * 14 day prediction
+   * @member {Object} 14day
+   */
+  exports.prototype['14day'] = undefined;
+  /**
+   * time of the prediction
    * @member {Object} timestamp
    */
   exports.prototype['timestamp'] = undefined;
