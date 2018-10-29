@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/Datum11'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./Datum11'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.PredictionsAccuracy = factory(root.PredictionEnterpriseApi.ApiClient);
+    root.PredictionEnterpriseApi.PredictionsAccuracy = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Datum11);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, Datum11) {
   'use strict';
 
 
@@ -48,8 +48,6 @@
     var _this = this;
 
 
-
-
   };
 
   /**
@@ -63,34 +61,18 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('accuracy')) {
-        obj['accuracy'] = ApiClient.convertToType(data['accuracy'], 'String');
-      }
-      if (data.hasOwnProperty('tokens')) {
-        obj['tokens'] = ApiClient.convertToType(data['tokens'], 'String');
-      }
-      if (data.hasOwnProperty('timestamp')) {
-        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], Object);
+      if (data.hasOwnProperty('data')) {
+        obj['data'] = ApiClient.convertToType(data['data'], [Datum11]);
       }
     }
     return obj;
   }
 
   /**
-   * Average accuracy over given tokens
-   * @member {String} accuracy
+   * 
+   * @member {Array.<module:model/Datum11>} data
    */
-  exports.prototype['accuracy'] = undefined;
-  /**
-   * Tokens the predictions were made on
-   * @member {String} tokens
-   */
-  exports.prototype['tokens'] = undefined;
-  /**
-   * time of the prediction accuracy calculation
-   * @member {Object} timestamp
-   */
-  exports.prototype['timestamp'] = undefined;
+  exports.prototype['data'] = undefined;
 
 
 

@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/FundTrade'], factory);
+    define(['ApiClient', 'model/FundTrades', 'model/FundTradesTokens'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/FundTrade'));
+    module.exports = factory(require('../ApiClient'), require('../model/FundTrades'), require('../model/FundTradesTokens'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.FundApi = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.FundTrade);
+    root.PredictionEnterpriseApi.FundApi = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.FundTrades, root.PredictionEnterpriseApi.FundTradesTokens);
   }
-}(this, function(ApiClient, FundTrade) {
+}(this, function(ApiClient, FundTrades, FundTradesTokens) {
   'use strict';
 
   /**
@@ -50,8 +50,8 @@
 
     /**
      * Traded token pairs
-     * Traded token pairs at The Simulated pPrediction fund.  base/quote currencies traded with  default quote currency is USD, if no quote currency specified assume USD 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<'String'>} and HTTP response
+     *  base/quote currencies traded with  default quote currency is USD, if no quote currency specified assume USD 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FundTradesTokens} and HTTP response
      */
     this.fundsSimfundPairsGetWithHttpInfo = function() {
       var postBody = null;
@@ -71,7 +71,7 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ['String'];
+      var returnType = FundTradesTokens;
 
       return this.apiClient.callApi(
         '/funds/simfund/pairs', 'GET',
@@ -82,8 +82,8 @@
 
     /**
      * Traded token pairs
-     * Traded token pairs at The Simulated pPrediction fund.  base/quote currencies traded with  default quote currency is USD, if no quote currency specified assume USD 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<'String'>}
+     *  base/quote currencies traded with  default quote currency is USD, if no quote currency specified assume USD 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FundTradesTokens}
      */
     this.fundsSimfundPairsGet = function() {
       return this.fundsSimfundPairsGetWithHttpInfo()
@@ -101,7 +101,7 @@
      * @param {String} opts.exit exit date for trades, e.g 2018-09-01.
      * @param {String} opts.direction short/long
      * @param {String} opts.sort sort by entry or exit, e.g. &#x60;sort&#x3D;entry:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/FundTrade>} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FundTrades} and HTTP response
      */
     this.fundsSimfundTradesGetWithHttpInfo = function(opts) {
       opts = opts || {};
@@ -126,7 +126,7 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = [FundTrade];
+      var returnType = FundTrades;
 
       return this.apiClient.callApi(
         '/funds/simfund/trades', 'GET',
@@ -143,7 +143,7 @@
      * @param {String} opts.exit exit date for trades, e.g 2018-09-01.
      * @param {String} opts.direction short/long
      * @param {String} opts.sort sort by entry or exit, e.g. &#x60;sort&#x3D;entry:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/FundTrade>}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FundTrades}
      */
     this.fundsSimfundTradesGet = function(opts) {
       return this.fundsSimfundTradesGetWithHttpInfo(opts)

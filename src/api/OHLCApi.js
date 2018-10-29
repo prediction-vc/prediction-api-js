@@ -56,7 +56,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.limit results limit, default 100
      * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Ohlc>} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Ohlc} and HTTP response
      */
     this.ohlcGetWithHttpInfo = function(symbol, from, opts) {
       opts = opts || {};
@@ -91,7 +91,7 @@
       var authNames = ['Authorization'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = [Ohlc];
+      var returnType = Ohlc;
 
       return this.apiClient.callApi(
         '/ohlc', 'GET',
@@ -108,7 +108,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.limit results limit, default 100
      * @param {String} opts.sort sort by timestamp, e.g. &#x60;sort&#x3D;timestamp:ASC&#x60;, default sort DESC
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Ohlc>}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Ohlc}
      */
     this.ohlcGet = function(symbol, from, opts) {
       return this.ohlcGetWithHttpInfo(symbol, from, opts)

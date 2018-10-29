@@ -16,63 +16,81 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Datum4'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Datum4'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.Historical = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Datum4);
+    root.PredictionEnterpriseApi.Datum11 = factory(root.PredictionEnterpriseApi.ApiClient);
   }
-}(this, function(ApiClient, Datum4) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The Historical model module.
-   * @module model/Historical
+   * The Datum11 model module.
+   * @module model/Datum11
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Historical</code>.
-   * @alias module:model/Historical
+   * Constructs a new <code>Datum11</code>.
+   * @alias module:model/Datum11
    * @class
    */
   var exports = function() {
     var _this = this;
 
 
+
+
   };
 
   /**
-   * Constructs a <code>Historical</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Datum11</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Historical} obj Optional instance to populate.
-   * @return {module:model/Historical} The populated <code>Historical</code> instance.
+   * @param {module:model/Datum11} obj Optional instance to populate.
+   * @return {module:model/Datum11} The populated <code>Datum11</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('data')) {
-        obj['data'] = ApiClient.convertToType(data['data'], [Datum4]);
+      if (data.hasOwnProperty('accuracy')) {
+        obj['accuracy'] = ApiClient.convertToType(data['accuracy'], 'String');
+      }
+      if (data.hasOwnProperty('tokens')) {
+        obj['tokens'] = ApiClient.convertToType(data['tokens'], 'String');
+      }
+      if (data.hasOwnProperty('timestamp')) {
+        obj['timestamp'] = ApiClient.convertToType(data['timestamp'], Object);
       }
     }
     return obj;
   }
 
   /**
-   * 
-   * @member {Array.<module:model/Datum4>} data
+   * Average accuracy over given tokens
+   * @member {String} accuracy
    */
-  exports.prototype['data'] = undefined;
+  exports.prototype['accuracy'] = undefined;
+  /**
+   * Tokens the predictions were made on
+   * @member {String} tokens
+   */
+  exports.prototype['tokens'] = undefined;
+  /**
+   * time of the prediction accuracy calculation
+   * @member {Object} timestamp
+   */
+  exports.prototype['timestamp'] = undefined;
 
 
 

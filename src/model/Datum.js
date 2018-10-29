@@ -25,7 +25,7 @@
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.FundTrade = factory(root.PredictionEnterpriseApi.ApiClient);
+    root.PredictionEnterpriseApi.Datum = factory(root.PredictionEnterpriseApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The FundTrade model module.
-   * @module model/FundTrade
+   * The Datum model module.
+   * @module model/Datum
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>FundTrade</code>.
-   * @alias module:model/FundTrade
+   * Constructs a new <code>Datum</code>.
+   * @alias module:model/Datum
    * @class
    */
   var exports = function() {
@@ -58,11 +58,11 @@
   };
 
   /**
-   * Constructs a <code>FundTrade</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Datum</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/FundTrade} obj Optional instance to populate.
-   * @return {module:model/FundTrade} The populated <code>FundTrade</code> instance.
+   * @param {module:model/Datum} obj Optional instance to populate.
+   * @return {module:model/Datum} The populated <code>Datum</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

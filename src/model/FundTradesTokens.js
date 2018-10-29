@@ -16,32 +16,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Datum4'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Datum4'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.PredictionEnterpriseApi) {
       root.PredictionEnterpriseApi = {};
     }
-    root.PredictionEnterpriseApi.Historical = factory(root.PredictionEnterpriseApi.ApiClient, root.PredictionEnterpriseApi.Datum4);
+    root.PredictionEnterpriseApi.FundTradesTokens = factory(root.PredictionEnterpriseApi.ApiClient);
   }
-}(this, function(ApiClient, Datum4) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The Historical model module.
-   * @module model/Historical
+   * The FundTradesTokens model module.
+   * @module model/FundTradesTokens
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Historical</code>.
-   * @alias module:model/Historical
+   * Constructs a new <code>FundTradesTokens</code>.
+   * @alias module:model/FundTradesTokens
    * @class
    */
   var exports = function() {
@@ -51,26 +51,26 @@
   };
 
   /**
-   * Constructs a <code>Historical</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>FundTradesTokens</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Historical} obj Optional instance to populate.
-   * @return {module:model/Historical} The populated <code>Historical</code> instance.
+   * @param {module:model/FundTradesTokens} obj Optional instance to populate.
+   * @return {module:model/FundTradesTokens} The populated <code>FundTradesTokens</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = ApiClient.convertToType(data['data'], [Datum4]);
+        obj['data'] = ApiClient.convertToType(data['data'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * 
-   * @member {Array.<module:model/Datum4>} data
+   * list of tokens the fund trades with
+   * @member {Array.<String>} data
    */
   exports.prototype['data'] = undefined;
 
